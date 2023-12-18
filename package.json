@@ -1,41 +1,50 @@
 {
-  "name": "bridget",
+  "name": "rexablog",
   "version": "v0.0.4",
-  "description": "bridget theme source file",
+  "description": "@rexagod's blog source.",
   "packageManager": "pnpm@8.10.2",
   "private": true,
   "sideEffects": false,
   "scripts": {
+    "sanitize:DateTimeOriginal": "exiftool '-filename<DateTimeOriginal' -d %Y-%m-%d_%H-%M-%S%%lc.%%e -r ./festina-lente -ext heic -ext jpeg -ext png",
+    "sanitize:CreateDate": "exiftool '-filename<CreateDate' -d %Y-%m-%d_%H-%M-%S%%lc.%%e -r ./festina-lente -ext heic -ext jpeg -ext png",
+    "sanitize": "run-p sanitize:DateTimeOriginal sanitize:CreateDate",
+    "convert": "find ./festina-lente -type f \\( -name \"*.jpeg\" -o -name \"*.heic\" \\) -exec convert '{}' -colorspace Gray '{}' \\;",
+    "organize:DateTimeOriginal": "exiftool '-Directory<DateTimeOriginal' -d ./site/content/festina-lente/%Y/%m/%d -r ./festina-lente -ext heic -ext jpeg -ext png",
+    "organize:CreateDate": "exiftool '-Directory<CreateDate' -d ./site/content/festina-lente/%Y/%m/%d -r ./festina-lente -ext heic -ext jpeg -ext png",
+    "organize": "run-p organize:DateTimeOriginal organize:CreateDate",
+    "assets": "mkdir -p ./festina-lente && cp /Users/rexagod/Documents/blog/* ./festina-lente/ && run-s convert sanitize organize; mv ./festina-lente/* ./site/content/festina-lente/",
     "lint": "eslint . --fix && prettier --write .",
     "lint:check": "eslint . && prettier . --check",
     "dev": "run-p rollup:dev hugo:dev",
-    "build": "rm -f ./static/bundled/js/* && run-s rollup:build hugo:build && yes | cp -rf ./exampleSite/public/css/* ./static/bundled/css",
+    "build": "rm -f ./static/bundled/js/* && run-s rollup:build hugo:build && yes | cp -rf ./site/public/css/* ./static/bundled/css",
+    "deploy": "netlify deploy --prod",
     "server": "run-p rollup:server hugo:server",
     "rollup:build": "rollup -c --environment BUILD:production",
     "rollup:server": "rollup -c --watch --environment BUILD:production",
     "rollup:dev": "rollup -c --watch --environment BUILD:development",
-    "hugo:build": "hugo --logLevel info --source=exampleSite --gc",
-    "hugo:preview": "hugo --logLevel info --source=exampleSite -D --gc",
-    "hugo:dev": "hugo server --source=exampleSite --gc -D --disableFastRender --watch --logLevel info",
-    "hugo:server": "hugo server --source=exampleSite --gc --disableFastRender -e production --watch --logLevel info"
+    "hugo:build": "hugo --logLevel info --source=site --gc --minify --enableGitInfo",
+    "hugo:preview": "hugo --logLevel info --source=site -D --gc",
+    "hugo:dev": "hugo server --source=site --gc -D --disableFastRender --watch --logLevel info",
+    "hugo:server": "hugo server --source=site --gc --disableFastRender -e production --watch --logLevel info",
+    "push": "run-s build deploy"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Sped0n/bridget.git"
+    "url": "git+https://github.com/rexagod/blog.git"
   },
   "keywords": [
     "hugo",
-    "theme",
-    "photography",
-    "typescript",
-    "sass"
+    "blog",
+    "gallery",
+    "photography"
   ],
-  "author": "spedon",
+  "author": "rexagod",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Sped0n/bridget/issues"
+    "url": "https://github.com/rexagod/blog/issues"
   },
-  "homepage": "https://github.com/Sped0n/bridget#readme",
+  "homepage": "https://github.com/rexagod/blog#readme",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",

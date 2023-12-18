@@ -1,9 +1,9 @@
 {
 	"version": 3,
 	"file": "style.css",
-	"sourceRoot": "/home/runner/work/bridget/bridget/exampleSite",
+	"sourceRoot": "/Users/rexagod/repositories/personal/blog/site",
 	"sources": [
-		"/home/runner/work/bridget/bridget/assets/scss/style.scss",
+		"/Users/rexagod/repositories/personal/blog/assets/scss/style.scss",
 		"assets/scss/_partial/_customCursor.scss",
 		"assets/scss/_partial/_stage.scss",
 		"assets/scss/_partial/_stageNav.scss",

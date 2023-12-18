@@ -1,24 +1,12 @@
 # Hugo default output directory
 public/
-/exampleSite/resources/
+/site/resources/
 
-node_modules/
+# Build artefacts
 build/
+festina-lente
 gen_/
+node_modules/
 
-## OS Files
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-
-# OSX
-.DS_Store
-
-# Linux
-.directory
-
-# Hugo
-.hugo_build.lock
-jsconfig.json
+# Local Netlify folder
+.netlify

@@ -1,0 +1,12 @@
+timeout = "1200s"
+baseURL = 'https://rexablog.netlify.com/'
+title = 'rexablog'
+disableKinds = ["section", "taxonomy", "term", "home"]
+enableRobotsTXT = true
+defaultContentLanguage = 'en'
+
+# theme as module
+[module]
+replacements = "github.com/rexagod/blog -> ../.." # deploy with local dir  WARN: delete this line if you want to deploy with git
+[[module.imports]]
+path = "github.com/rexagod/blog" # deploy with git (recommended)  WARN: you should also set `bundled` to true in params.toml !!!

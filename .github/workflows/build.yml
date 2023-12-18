@@ -72,8 +72,8 @@ jobs:
       - name: Setup hugo cache
         uses: actions/cache@v3
         with:
-          path: ./exampleSite/resources
-          key: ${{ runner.os }}-hugo-${{ hashFiles('./exampleSite') }}
+          path: ./site/resources
+          key: ${{ runner.os }}-hugo-${{ hashFiles('./site') }}
           restore-keys: ${{ runner.os }}-hugo-
 
       - name: Install dependencies

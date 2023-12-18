@@ -3,9 +3,9 @@
 
 name = "Bridget"
 license = "MIT"
-licenselink = "https://github.com/Sped0n/bridget/blob/main/LICENSE"
+licenselink = "https://github.com/rexagod/blog/blob/main/LICENSE"
 description = "Bridget is a minimal Hugo theme designed for photographers/visual artists."
-homepage = "https://github.com/Sped0n/bridget"
+homepage = "https://github.com/rexagod/blog"
 demosite = "https://bridget-demo.sped0nwen.com"
 tags = ["gallery", "minimal", "portfolio", "responsive"]
 features = ["SEO optimized", "TypeScript", "multi-language support"]
